@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="sign_in_screentitle">Log In</string>
+    <string name="sign_up_screentitle">Sign Up</string>
+    <string name="home_screentitle">Home</string>
+    <string name="shop_detail">Shop Detail</string>
+    
+    <string name="search_screentitle">Search</string>
+    <string name="searchresults_screentitle">Search Results</string>
+    <string name="accountdetails_screentitle">Account</string>
+    <string name="changepassword_screentitle">Change Password</string>
+
+</resources>

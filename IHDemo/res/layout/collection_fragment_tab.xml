@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.ih.demo"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background"
+    android:orientation="vertical" >
+
+    <com.ih.customwidgets.CustomTextView
+        android:id="@+id/collectionName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/red"
+        custom:customFont="@string/font_roboto_regular" />
+
+    <ImageView
+        android:id="@+id/collectionImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/content_background" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp" >
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/collectionRecommend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:drawableLeft="@drawable/favorite_btn_select"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:text="Recommend"
+            custom:customFont="@string/font_roboto_regular" />
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/collectionShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/favorite_btn_select"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:text="Share"
+            custom:customFont="@string/font_roboto_regular" />
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/collectionAddToWishlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@drawable/favorite_btn_select"
+            android:drawablePadding="2dp"
+            android:gravity="center"
+            android:text="Add to Wishlist"
+            custom:customFont="@string/font_roboto_regular" />
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.ih.viewpagerindicator.TabPageIndicator
+                android:id="@+id/indicator"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/pager"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>

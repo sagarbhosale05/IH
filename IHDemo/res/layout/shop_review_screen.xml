@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.ih.demo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/global_main_bg"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="2dip"
+        android:drawSelectorOnTop="false"
+        android:fadingEdge="none"
+        android:footerDividersEnabled="true"
+        android:headerDividersEnabled="true"
+        android:longClickable="false"
+        android:scrollbars="none"
+        android:smoothScrollbar="true" >
+    </ListView>
+
+    <com.ih.customwidgets.CustomButton
+        android:id="@+id/addReviewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Add Review"
+        custom:customFont="@string/font_roboto_regular" />
+
+</LinearLayout>

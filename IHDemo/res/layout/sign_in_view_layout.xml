@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.ih.demo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dip"
+        android:layout_gravity="bottom"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="26dip"
+        android:paddingRight="26dip" >
+
+        <com.ih.customwidgets.CustomButton
+            android:id="@+id/btnLoginWithFb"
+            style="@style/TextAppearance_white_shade1_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dip"
+            android:background="@drawable/connect_with_fb_btn_selector"
+            android:gravity="center_vertical"
+            android:paddingLeft="47dp"
+            android:text="@string/btn_connect_with_fb_text"
+            custom:customFont="@string/font_roboto_boldcondensed" />
+        <!-- android:background="@drawable/connect_with_fb_btn_selector" -->
+
+        <com.ih.customwidgets.CustomButton
+            android:id="@+id/btnLoginWithTw"
+            style="@style/TextAppearance_white_shade1_20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dip"
+            android:background="@drawable/connect_with_tw_btn_selector"
+            android:gravity="center_vertical"
+            android:paddingLeft="47dp"
+            android:text="@string/btn_connect_with_tw_text"
+            custom:customFont="@string/font_roboto_boldcondensed" />
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/textview_section"
+            style="@style/TextAppearance_white_shade1_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:gravity="center"
+            android:text="@string/login_with_email"
+            custom:customFont="@string/font_roboto_regular" />
+
+        <com.ih.customwidgets.CustomEditText
+            android:id="@+id/editTextEmailId"
+            style="@style/TextAppearance_18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dip"
+            android:ems="10"
+            android:hint="@string/hint_email_id"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/grey_shade13"
+            custom:customFont="@string/font_roboto_regular" />
+
+        <com.ih.customwidgets.CustomEditText
+            android:id="@+id/editTextPassword"
+            style="@style/TextAppearance_18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:ems="10"
+            android:hint="@string/hint_password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:textColor="@color/grey_shade13"
+            custom:customFont="@string/font_roboto_regular" />
+
+        <com.ih.customwidgets.CustomButton
+            android:id="@+id/btnSignInNative"
+            style="@style/TextAppearance_blueshade3_26_regular"
+            android:layout_width="186dip"
+            android:layout_height="42dip"
+            android:layout_marginTop="19dip"
+            android:background="@drawable/button_selector"
+            android:text="@string/btn_sign_in_text"
+            custom:customFont="@string/font_roboto_boldcondensed" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,499 @@
+<resources>
+
+     <!-- Base theme for the menu drawer. -->
+    <style name="Widget.MenuDrawer">
+        <item name="mdMenuBackground">@color/md__defaultBackground</item>
+        <item name="mdContentBackground">?android:attr/windowBackground</item>
+    </style>
+    <style name="TextAppearance_bright_blue_bold_25">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/bright_blue</item>
+    </style>
+
+    <style name="TextAppearance_grey_bold_25">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="TextAppearance_lightgrey_bold_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/light_grey</item>
+    </style>
+
+    <style name="TextAppearance_lightgrey_bold_16_search">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/light_grey</item>
+    </style>
+
+    <style name="TextAppearance_lightblue_bold_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/light_blue</item>
+    </style>
+
+    <style name="TextAppearance_lightblue_bold_14_search">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/light_blue</item>
+    </style>
+
+    <style name="TextAppearance_lightblue2_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/light_blueshade2</item>
+    </style>
+
+    <style name="TextAppearance_lightblue2_12_search">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/light_blueshade2</item>
+    </style>
+
+    <style name="TextAppearance_orange_shade1_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/orange_shade1</item>
+    </style>
+
+    <style name="TextAppearance_orange_shade1_14_search">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/orange_shade1</item>
+    </style>
+
+    <style name="TextAppearance_orange_shade1_14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/orange_shade1</item>
+    </style>
+
+    <style name="TextAppearance_white_shade1_14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white_shade1</item>
+    </style>
+
+    <style name="TextAppearance_white_shade1_12_search">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white_shade1</item>
+    </style>
+
+    <style name="TextAppearance_white_shade_14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextAppearance_orange_shade2_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/orange_shade2</item>
+    </style>
+
+    <style name="TextAppearance_grey_shade11_11">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/grey_shade11</item>
+    </style>
+
+    <style name="TextAppearance_grey5_bold_14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/grey_shade5</item>
+    </style>
+
+    <style name="TextAppearance_grey_bold_22">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="TextAppearance_black_bold_32">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextAppearance_black_bold_25">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="TextAppearance_light_grey_bold_28">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/light_grey</item>
+    </style>
+
+    <style name="TextAppearance_white_bold_32">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextAppearance_black_regular_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextAppearance_18">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="TextAppearance_16">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance_14">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance_black_regular_14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextAppearance_black_regular_20">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextAppearance_light_blue_bold_28">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/light_blue</item>
+    </style>
+
+    <style name="TextAppearance_grey_shade4_24">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/grey_shade4</item>
+    </style>
+
+    <style name="TextAppearance_grey_shade4_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/grey_shade4</item>
+    </style>
+
+    <style name="TextAppearance_grey_shade6_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/grey_shade6</item>
+    </style>
+
+    <style name="TextAppearance_grey_shade7_14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/grey_shade7</item>
+    </style>
+
+    <style name="TextAppearance_white_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextAppearance_grey_shade6_14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/grey_shade6</item>
+    </style>
+    <!--  -->
+    <style name="TextAppearance_black_shade1_18">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black_shade1</item>
+    </style>
+    <!--  -->
+    <style name="TextAppearance_blue_shade_1_bold_28">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/blue_shade1</item>
+    </style>
+
+    <style name="TextAppearance_grey_shade_6_bold26">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/grey_shade7</item>
+    </style>
+
+    <style name="TextAppearance_grey_shade_26_regular">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/grey_shade7</item>
+    </style>
+
+    <style name="TextAppearance_orange_28">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/orange</item>
+    </style>
+
+    <style name="TextAppearance_orange_shade_1_bold_28">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/orange_shade1</item>
+    </style>
+
+    <style name="TextAppearance_grey_shade1_bold_28">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/grey_shade1</item>
+    </style>
+
+    <style name="TextAppearance_grey_shade1_bold_30">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/grey_shade1</item>
+    </style>
+
+    <style name="TextAppearance_white_shade1_28">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextAppearance_grey_darkshade_28">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+
+    <style name="TextAppearance_white_shade1_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextAppearance_white_shade1_20">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextAppearance_white_shade1_14">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextAppearance_orange_22">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/orange_app</item>
+    </style>
+
+    <style name="TextAppearance_orange_18_regular">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/orange_app</item>
+    </style>
+
+    <style name="TextAppearance_orange_22_regular">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/orange_app</item>
+    </style>
+
+    <style name="TextAppearance_orange_26_regular">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/orange_app</item>
+    </style>
+
+    <style name="TextAppearance_black_14_regular">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextAppearance_blue_18_regular">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/blue_app</item>
+    </style>
+
+    <style name="TextAppearance_blue_22_regular">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/blue_app</item>
+    </style>
+
+    <style name="TextAppearance_blue_shade2_regular_18">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/blue_shade2</item>
+    </style>
+
+    <style name="TextAppearance_greyshade10_regular_14">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/grey_shade10</item>
+    </style>
+
+    <style name="TextAppearance_blue_26_regular">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/blue_app</item>
+    </style>
+
+    <style name="TextAppearance_blueshade3_26_regular">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/blue_shade3</item>
+    </style>
+
+    <style name="TextAppearance_blue_14_regular">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/blue_app</item>
+    </style>
+
+    <style name="TextAppearance_black_16_regular">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextAppearance_black_shade1_20">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/black_shade1</item>
+    </style>
+
+    <!-- Variation on the Holo Light theme that styles the Action Bar -->
+    <style name="Theme.AndroidDevelopers" parent="Theme.Sherlock.Light">
+
+        <!-- <item name="android:actionBarItemBackground">@drawable/ad_selectable_background</item> -->
+        <!-- <item name="actionBarItemBackground">@drawable/ad_selectable_background</item> -->
+        <item name="android:popupMenuStyle">@style/MyPopupMenu</item>
+        <item name="titleTextStyle">@style/TextAppearance_blue_18_regular</item>
+        <item name="popupMenuStyle">@style/MyPopupMenu</item>
+        <item name="android:dropDownListViewStyle">@style/MyDropDownListView</item>
+        <item name="dropDownListViewStyle">@style/MyDropDownListView</item>
+        <item name="android:actionBarTabStyle">@style/MyActionBarTabStyle</item>
+        <item name="actionBarTabStyle">@style/MyActionBarTabStyle</item>
+        <item name="android:actionDropDownStyle">@style/MyDropDownNav</item>
+        <item name="actionDropDownStyle">@style/MyDropDownNav</item>
+        <!-- <item name="android:listChoiceIndicatorMultiple">@drawable/ad_btn_check_holo_light</item> -->
+        <!-- <item name="android:listChoiceIndicatorSingle">@drawable/ad_btn_radio_holo_light</item> -->
+        <item name="android:homeAsUpIndicator">@drawable/back</item>
+        <item name="homeAsUpIndicator">@drawable/back</item>
+        <!-- <item name="android:actionOverflowButtonStyle">@style/MyOverflowButton</item> -->
+        <item name="actionBarStyle">@style/CustomActionBarStyle</item>
+        <item name="android:actionBarStyle">@style/CustomActionBarStyle</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="CustomActionBarStyle" parent="@style/Widget.Sherlock.ActionBar">
+        <item name="titleTextStyle">@style/CustomTitleColorBar</item>
+        <item name="android:titleTextStyle">@style/CustomTitleColorBar</item>
+    </style>
+
+    <!-- Style for the color title bar -->
+    <style name="CustomTitleColorBar" parent="@style/TextAppearance.Sherlock.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!-- style the overflow menu -->
+    <style name="MyPopupMenu" parent="Widget.Sherlock.Light.PopupMenu">
+        <!-- <item name="android:popupBackground">@drawable/ad_menu_dropdown_panel_holo_light</item> -->
+    </style>
+
+    <!-- style the items within the overflow menu -->
+    <style name="MyDropDownListView" parent="Widget.Sherlock.ListView.DropDown">
+        <item name="android:listSelector">@drawable/ad_selectable_background</item>
+        <item name="android:divider">@drawable/chart_divider</item>
+        <item name="android:dividerHeight">1dp</item>
+    </style>
+
+    <!-- style for the tabs -->
+    <style name="MyActionBarTabStyle" parent="Widget.Sherlock.Light.ActionBar.TabBar">
+        <item name="android:background">@drawable/actionbar_tab_bg</item>
+        <item name="android:paddingLeft">32dp</item>
+        <item name="android:paddingRight">32dp</item>
+    </style>
+
+    <!-- style the list navigation -->
+    <style name="MyDropDownNav" parent="Widget.Sherlock.Light.Spinner.DropDown.ActionBar">
+        <item name="android:background">@drawable/ad_spinner_background_holo_light</item>
+        <item name="android:popupBackground">@drawable/ad_menu_dropdown_panel_holo_light</item>
+        <item name="android:dropDownSelector">@drawable/ad_selectable_background</item>
+    </style>
+
+    <!--
+         the following can be used to style the overflow menu button
+         only do this if you have an *extremely* good reason to!!
+    -->
+    <!--
+    <style name="MyOverflowButton" parent="Widget.Sherlock.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_menu_view</item>
+        <item name="android:background">@drawable/action_button_background</item>
+    </style>
+    -->
+
+    <style name="Theme.MY.Sherlock.Fullscreen" parent="Theme.Sherlock.Light.DarkActionBar">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="Widget.MyTheme.ActionBar" parent="Widget.Sherlock.ActionBar">
+        <item name="android:background">@color/black</item>
+        <item name="background">@color/black</item>
+    </style>
+
+    <style name="Theme_Dialog_Translucent" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="TextAppearance_orange_26_regular">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/orange</item>
+    </style>
+
+    <!-- Layout Width=match_parent Height=match_parent -->
+    <style name="Layout_WmHm">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!-- Layout Width=wrap_content Height=wrap_content -->
+    <style name="Layout_WwHw">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!-- Layout Width=wrap_content Height=match_parent -->
+    <style name="Layout_WwHm">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!-- Layout Width=match_parent Height=wrap_content -->
+    <style name="Layout_WmHw">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!-- Side Bar menu title textview style -->
+    <style name="TextAppearance_Sidebar_Menu_Title" parent="@style/Layout_WmHw">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- Side Bar menu subtitle textview style -->
+    <style name="TextAppearance_Sidebar_Menu_SubTitle" parent="@style/Layout_WmHw">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- Side Bar menu title textview theme -->
+    <style name="Sidebar_Menu_Title_Theme" parent="@style/Layout_WmHw">
+        <item name="android:background">@drawable/selector_sidebar_menu_subtitle_background</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Side Bar menu subtitle textview theme -->
+    <style name="Sidebar_Menu_SubTitle_Theme" parent="@style/Layout_WmHw">
+        <item name="android:background">@drawable/selector_sidebar_menu_subtitle_background</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Side Bar menu list style -->
+    <style name="Sidebar_Menu_List" parent="@style/Layout_WmHm">
+        <item name="android:dividerHeight">1dp</item>
+        <item name="android:divider">@color/black</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:cacheColorHint">@android:color/transparent</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+    </style>
+
+    <!-- Side Bar menu icon style -->
+    <style name="Sidebar_Menu_Icon">
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:contentDescription">"null"</item>
+    </style>
+
+</resources>

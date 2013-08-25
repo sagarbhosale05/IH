@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Press -->
+    <item android:drawable="@drawable/icn_search_pressed" android:state_pressed="true"/>
+    <!-- Normal -->
+    <item android:drawable="@drawable/icn_search_default"/>
+
+</selector>

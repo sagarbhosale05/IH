@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   
+    <dimen name="sideindexbar_text">15sp</dimen>
+ <dimen name="adview_height">90dip</dimen>
+</resources>

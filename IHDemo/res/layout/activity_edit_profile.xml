@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:scrollbarStyle="outsideOverlay" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_horizontal_margin" >
+
+        <ImageView
+            android:id="@+id/shop_picture"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" android:onClick="onClick"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Name" />
+
+        <EditText
+            android:id="@+id/name_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="name" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address" />
+
+        <EditText
+            android:id="@+id/address_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="address" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Category" />
+
+        <EditText
+            android:id="@+id/category_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="category" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone" />
+
+        <EditText
+            android:id="@+id/phone_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="phone"
+            android:inputType="phone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Website" />
+
+        <EditText
+            android:id="@+id/website_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="website"
+            android:inputType="textWebEditText" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email" />
+
+        <EditText
+            android:id="@+id/email_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="email"
+            android:inputType="textEmailAddress" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Facebook Likes" />
+
+        <EditText
+            android:id="@+id/fblike_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="facebook like"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hours" />
+
+        <EditText
+            android:id="@+id/hours_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="hours" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Shop Location Lat,Long" />
+
+        <EditText
+            android:id="@+id/latlong_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lat,Long" />
+
+        <Button android:id="@+id/btn_save" android:onClick="onClick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:text="Save" />
+    </LinearLayout>
+
+</ScrollView>

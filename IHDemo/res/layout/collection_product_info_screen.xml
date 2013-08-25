@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.ih.demo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp" >
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/shopAddessTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Description:"
+            custom:customFont="@string/font_roboto_regular" />
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/productDescriptionValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            custom:customFont="@string/font_roboto_regular" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/shopCategoryTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Size / Dimensions:"
+            custom:customFont="@string/font_roboto_regular" />
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/sizeValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            custom:customFont="@string/font_roboto_regular" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/shopPhoneTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Price:"
+            custom:customFont="@string/font_roboto_regular" />
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/priceValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            custom:customFont="@string/font_roboto_regular" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/shopWebsiteTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Material:"
+            custom:customFont="@string/font_roboto_regular" />
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/materialValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            custom:customFont="@string/font_roboto_regular" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/shopEmailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="In Stock:"
+            custom:customFont="@string/font_roboto_regular" />
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/inStockValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            custom:customFont="@string/font_roboto_regular" />
+    </TableRow>
+
+</LinearLayout>
