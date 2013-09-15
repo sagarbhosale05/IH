@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.ih.demo"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:background="@drawable/content_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="20dp" >
+
+    <ImageView
+        android:id="@+id/collectionImageView"
+        android:layout_width="110dp"
+        android:layout_height="80dp"
+        android:adjustViewBounds="true" />
+
+    <com.ih.customwidgets.CustomTextView
+        android:id="@+id/collectionTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:gravity="center"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:textColor="@color/red"
+        android:textSize="12sp"
+        custom:customFont="@string/font_roboto_regular" />
+
+    <RelativeLayout
+        android:id="@+id/bottomRL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/collectionPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="12sp"
+            custom:customFont="@string/font_roboto_regular" />
+
+        <com.ih.customwidgets.CustomTextView
+            android:id="@+id/collectionInStockTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="12sp"
+            custom:customFont="@string/font_roboto_regular" />
+    </RelativeLayout>
+
+</LinearLayout>

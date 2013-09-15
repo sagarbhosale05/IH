@@ -1,0 +1,95 @@
+<resources>
+
+    <string name="app_name">IH</string>
+    <string name="shared_pref_device_info">device_info</string>
+    <string name="shared_pref_key_density">density</string>
+    <string name="shared_pref_key_dimen_height">height</string>
+    <string name="shared_pref_key_dimen_width">width</string>
+    <string name="shared_pref_credentials">credentials</string>
+    <string name="shared_pref_key_unique_id_app">unique_id_app</string>
+    <string name="shared_pref_key_unique_id_facebook">unique_id_facebook</string>
+    <string name="shared_pref_key_unique_id_twitter">unique_id_twitter</string>
+    <string name="account_details_emailid">email_id</string>
+    <string name="facebook_app_id">273428716127254</string>
+    <string name="Settings_Help">Help</string>
+    <string name="Settings_Copyright">Copyright</string>
+    <string name="Settings_Version">Version</string>
+    <string name="no_network_connection">No network connectivity. Please check your network connection.</string>
+    <string name="no_network_connection_title">No network connection</string>
+    <string name="timeout_error_title">Server Connection Error</string>
+    <string name="timeout_error">Server connection is temporary unavailable. Please try again later.</string>
+    <string name="webservice_fail_title">Error</string>
+    <string name="webservice_fail">An unexpected error has occurred. Please try again later.</string>
+    <string name="login_with_email">Or log in with your email address</string>
+    <string name="signup_with_email">Or create an account with your email address</string>
+    <string name="agree_terms">By signing up, you agree to the </string>
+    <string name="settings_btn_text">Settings</string>
+    <string name="ok_btn_text">OK</string>
+    <string name="logout_msg">Are you sure you want to log out?</string>
+    <string name="home_tag">home</string>
+    <string name="shop_detail_tag">shop detail</string>
+    <string name="copyrights_txt">© 2013 Indie haat</string>
+    <string name="default_version_no_txt">Version 1.0</string>
+    <string name="btn_sign_up_text">SIGN UP</string>
+    <string name="btn_sign_in_text">LOG IN</string>
+    <string name="btn_skip_text">SKIP</string>
+    <string name="btn_connect_with_fb_text">Log In with Facebook</string>
+    <string name="btn_connect_with_tw_text">Log In with Twitter</string>
+    <string name="btn_sign_up_with_fb_text">Sign Up with Facebook</string>
+    <string name="btn_sign_up_with_tw_text">Sign Up with Twitter</string>
+    <string name="btn_login_with_fb_text">Login With Facebook</string>
+    <string name="btn_login_with_tw_text">Login With Twitter</string>
+    <string name="hint_first_name">First Name</string>
+    <string name="hint_last_name">Last Name</string>
+    <string name="hint_email_id">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_search">Please enter a search value</string>
+    <string name="hint_currentPassword">Current Password</string>
+    <string name="hint_newPassword">New Password</string>
+    <string name="hint_confirmPassword">Retype New Password</string>
+    <string name="account_info_prefix">Login With: </string>
+    <string name="valid_email">Please enter a valid email address.</string>
+    <string name="mandatory_fields">Please fill out all required fields.</string>
+    <string name="old_new_password">Old Password and New Password cannot be the same.</string>
+    <string name="passwords_not_matching">Passwords do not match.</string>
+    <string name="enter_valid_search_criteria">Please enter valid search criteria.</string>
+    <string name="processing">Processing...</string>
+    <string name="sign_in_progress_text">Logging in...</string>
+    <string name="signup_progress_text">Signing up...</string>
+    <string name="alertTitle">Alert!</string>
+    <string name="loginToTwitterForDetails">Please login to twitter to get the details</string>
+    <string name="sendEmailIntentMessage">Send mail...</string>
+    <string name="facebookShareBundleKeyName">name</string>
+    <string name="facebookShareBundleKeyLink">link</string>
+    <string name="facebookShareBundleKeyCaption">caption</string>
+    <string name="facebookShareBundleKeyDescription">description</string>
+    <string name="facebookShareBundleKeyPicture">picture</string>
+    <string name="logged_in_with_fb">You are already logged in with a Facebook account.</string>
+    <string name="logged_in_with_tw">You are already logged in with a Twitter account.</string>
+    <string name="cancel_btn_text">Cancel</string>
+    <string name="Settings_SignOut">Log Out</string>
+    <!-- Start of Action Bar menu string -->
+   
+    <string name="editprofile_txt">Edit Profile</string>
+	<string name="addproduct_txt">Add Product</string>
+    <string name="about_txt">About</string>
+    <string name="privacy_policy_txt">Privacy Policy</string>
+    <string name="account_txt">Account</string>
+    <string name="terms_of_use_txt">Terms of Use</string>
+    <string name="logout_txt">Log Out</string>
+
+    <!-- End of Action Bar menu strings -->
+
+
+    <!-- Start of Font strings -->
+    <string name="font_roboto_regular">Roboto-Regular.ttf</string>
+    <string name="font_roboto_bold">Roboto-Bold.ttf</string>
+    <string name="font_roboto_boldcondensed">Roboto-BoldCondensed.ttf</string>
+    <string name="font_roboto_condensed">Roboto-Condensed.ttf</string>
+    <!-- End of Font strings -->
+
+    <string name="app_id">273428716127254</string>
+    <string name="activity_not_found_txt">Not able to complete action</string>
+    <string name="closing_app_confirmation_message_txt">Do you want to exit?</string>
+
+</resources>

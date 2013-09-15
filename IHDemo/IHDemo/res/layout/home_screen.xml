@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res/com.ih.demo"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp" >
+
+    <com.ih.customwidgets.CustomButton
+        android:id="@+id/btnHomeSignIn"
+        style="@style/TextAppearance_blueshade3_26_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:text="@string/btn_sign_in_text"
+        custom:customFont="@string/font_roboto_boldcondensed" />
+
+    <com.ih.customwidgets.CustomButton
+        android:id="@+id/btnSignUp"
+        style="@style/TextAppearance_blueshade3_26_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnHomeSignIn"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_selector"
+        android:gravity="center"
+        android:text="@string/btn_sign_up_text"
+        custom:customFont="@string/font_roboto_boldcondensed" />
+
+</RelativeLayout>

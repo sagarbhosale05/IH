@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="version_spacing">240dp</dimen>
+    <dimen name="sideindexbar_text">5sp</dimen>
+    <dimen name="top_bicycle_image_margin">45dp</dimen>
+    <dimen name="bottom_bicycle_image_margin">90dip</dimen>
+
+</resources>
