@@ -69,14 +69,27 @@ public class CollectionProductInfoScreen extends SherlockFragment {
 		((CustomTextView) root
 				.findViewById(R.id.productDescriptionValueTextView))
 				.setText(collection.getCollectionDescription());
-		((CustomTextView) root.findViewById(R.id.sizeValueTextView))
-				.setText(""+collection.getCollectionSizeDimensions());
+		((CustomTextView) root.findViewById(R.id.sizeValueTextView)).setText(""	+ collection.getCollectionSizeDimensions());
 		((CustomTextView) root.findViewById(R.id.priceValueTextView))
-				.setText(""+collection.getCollectionPrice());
+				.setText("" + collection.getCollectionPrice());
 		((CustomTextView) root.findViewById(R.id.materialValueTextView))
 				.setText(collection.getCollectionMaterial());
+		String inStock = null;
+		switch (collection.isCollectiontInStock()) {
+		case 0:
+			inStock = "Yes";
+			break;
+		case 1:
+			inStock = "No";
+			break;
+		case 2:
+			inStock = "Soon";
+			break;
+
+		}
+
 		((CustomTextView) root.findViewById(R.id.inStockValueTextView))
-				.setText(collection.isCollectiontInStock() ? "Yes" : "No");
+				.setText("" + inStock);
 
 	}
 

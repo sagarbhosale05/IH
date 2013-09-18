@@ -252,8 +252,8 @@ public class Shop implements Serializable {
 			shop.setShopFBLike(shopCursor.getString(shopCursor.getColumnIndex("FBLIKE")));
 			shop.setShopHrs(shopCursor.getString(shopCursor.getColumnIndex("HOURS")));
 			shop.setShopImageUrl(shopCursor.getString(shopCursor.getColumnIndex("IMAGE_URL")));
-			shop.setShopLat(shopCursor.getString(shopCursor.getColumnIndex("SHOP_LATLONG")).split(",")[0]);
-			shop.setShopLong(shopCursor.getString(shopCursor.getColumnIndex("SHOP_LATLONG")).split(",")[1]);
+			shop.setShopLat(shopCursor.getString(shopCursor.getColumnIndex("SHOP_LATLONG")).split(";")[0]);
+			shop.setShopLong(shopCursor.getString(shopCursor.getColumnIndex("SHOP_LATLONG")).split(";")[1]);
 			shop.setShopPhone(shopCursor.getString(shopCursor.getColumnIndex("PHONE")));
 			shop.setShopWebSite(shopCursor.getString(shopCursor.getColumnIndex("WEBSITE")));
 			shop.setShopRes(R.drawable.shop1);

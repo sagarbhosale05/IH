@@ -9,9 +9,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v4.app.FragmentTransaction;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
 
 import com.ih.BaseActivity;
 import com.ih.IHApp;
@@ -75,13 +72,15 @@ public class HomeFragmentActivity extends DrawerBaseActivity implements
 	}
 
 	private void addDasBoardFragment() {
-		FragmentManager fragmentManager = getSupportFragmentManager();
+		/*FragmentManager fragmentManager = getSupportFragmentManager();
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
 		Fragment dashBoardFragment = new DashBoardFragment();
 		transaction.add(R.id.fragment_container, dashBoardFragment,
 				getString(R.string.home_tag));
 		transaction.setBreadCrumbTitle(getString(R.string.home_screentitle));
-		transaction.commit();
+		transaction.commit();*/
+		Intent intent=new Intent(this, ShopDetailFragmentActivity.class);
+		startActivity(intent);
 	}
 
 	@Override

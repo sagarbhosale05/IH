@@ -25,6 +25,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="47dp"
             android:text="@string/btn_connect_with_fb_text"
+            android:visibility="gone"
             custom:customFont="@string/font_roboto_boldcondensed" />
         <!-- android:background="@drawable/connect_with_fb_btn_selector" -->
 
@@ -38,6 +39,7 @@
             android:gravity="center_vertical"
             android:paddingLeft="47dp"
             android:text="@string/btn_connect_with_tw_text"
+            android:visibility="gone"
             custom:customFont="@string/font_roboto_boldcondensed" />
 
         <com.ih.customwidgets.CustomTextView
@@ -48,6 +50,7 @@
             android:layout_marginTop="5dip"
             android:gravity="center"
             android:text="@string/login_with_email"
+            android:visibility="gone"
             custom:customFont="@string/font_roboto_regular" />
 
         <com.ih.customwidgets.CustomEditText

@@ -14,6 +14,7 @@ import android.widget.RelativeLayout;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Window;
 import com.ih.customwidgets.CustomTextView;
+import com.ih.database.DBAdapter;
 import com.ih.demo.R;
 import com.ih.utility.Constants;
 import com.ih.utility.DeviceInformation;
@@ -42,16 +43,19 @@ public class SplashFragmentActivity extends SherlockFragmentActivity implements 
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.splash_screen);
-		
+		checkDB();
 		sendMessageToHandler();
-		
 		DeviceInformation.setDeviceDensity(getWindowManager(), this);
 		DeviceInformation.setDeviceDimensions(getWindowManager(), this);
-		
 		((RelativeLayout)findViewById(R.id.layout)).setOnClickListener(this);
 
 		
 		((CustomTextView)findViewById(R.id.settingsVersion)).setText(Utility.getVersionName(this));
+	}
+
+	private void checkDB() {
+		DBAdapter dbAdapter=new DBAdapter(getApplicationContext());
+		dbAdapter.createDataBase();
 	}
 
 	private void sendMessageToHandler() {

@@ -31,6 +31,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="47dp"
                 android:text="@string/btn_sign_up_with_fb_text"
+                android:visibility="gone"
                 custom:customFont="@string/font_roboto_boldcondensed" />
 
             <com.ih.customwidgets.CustomButton
@@ -43,6 +44,7 @@
                 android:gravity="center_vertical"
                 android:paddingLeft="47dp"
                 android:text="@string/btn_sign_up_with_tw_text"
+                android:visibility="gone"
                 custom:customFont="@string/font_roboto_boldcondensed" />
 
             <com.ih.customwidgets.CustomTextView
@@ -53,6 +55,7 @@
                 android:layout_marginTop="5dip"
                 android:gravity="center"
                 android:text="@string/signup_with_email"
+                android:visibility="gone"
                 custom:customFont="@string/font_roboto_regular" />
 
             <LinearLayout
@@ -128,7 +131,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical"
+                android:visibility="gone" >
 
                 <com.ih.customwidgets.CustomTextView
                     android:id="@+id/agree_termsOfUse"

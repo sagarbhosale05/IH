@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -14,33 +15,31 @@ import com.ih.customwidgets.CustomTextView;
 import com.ih.demo.R;
 import com.ih.model.Collection;
 import com.ih.viewpagerindicator.TabPageIndicator;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class CollectionDetailScreen extends BaseActivity {
 
 	private ViewPager pager;
-	TabPageIndicator tabHost;
+	private TabPageIndicator tabHost;
 	private static String[] COLLECTION_TAB_CONTENT;
 	private boolean fromDashboardScreen;
-	ImageView mapButton;
+	private ImageView mapButton;
 
-	String mContent;
-	Context context;
-	Collection collection;
+	private String mContent;
+	private Context context;
+	private Collection collection;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
-		// TODO Auto-generated method stub
 		super.onCreate(arg0);
 		setContentView(R.layout.collection_fragment_tab);
 		collection = (Collection) getIntent().getExtras().getSerializable(
 				"collectionObj");
-		screenTitle=getIntent().getExtras().getString("title");
+		screenTitle = getIntent().getExtras().getString("title");
 		setScreenTitle();
 		initializeScreen();
 		initializeHandler();
 		this.setActionBarHomeAsUpEnabled(true);
-		
-		
 
 	}
 
@@ -50,11 +49,22 @@ public class CollectionDetailScreen extends BaseActivity {
 	}
 
 	private void initializeScreen() {
+		ImageLoader imageLoader = ImageLoader.getInstance();
 		((CustomTextView) findViewById(R.id.collectionName)).setText(collection
 				.getCollectionName());
 
-		((ImageView) findViewById(R.id.collectionImage))
-				.setImageResource(collection.getCollectionRes());
+		if (TextUtils.isEmpty(collection.getCollectiontImageUrl()))
+			imageLoader.displayImage(
+					"drawable//" + collection.getCollectionRes(),
+					((ImageView) findViewById(R.id.collectionImage)));
+		else {
+			imageLoader.displayImage((collection.getCollectiontImageUrl()
+					.startsWith("http") || collection.getCollectiontImageUrl()
+					.startsWith("https")) ? collection.getCollectiontImageUrl()
+					: "file://" + collection.getCollectiontImageUrl(),
+					((ImageView) findViewById(R.id.collectionImage)));
+
+		}
 
 		COLLECTION_TAB_CONTENT = new String[] { "Product Info", "Comments",
 				"Loved By" };

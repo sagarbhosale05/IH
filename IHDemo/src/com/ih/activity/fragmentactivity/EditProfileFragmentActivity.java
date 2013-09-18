@@ -28,9 +28,9 @@ import com.ih.utility.Utility;
 
 public class EditProfileFragmentActivity extends BaseActivity {
 
-	DBAdapter dbAdapter;
-	Shop shop;
-	EditText shopNameEditText, shopAddressEditText, shopWebsiteEditText,
+	private DBAdapter dbAdapter;
+	private Shop shop;
+	private EditText shopNameEditText, shopAddressEditText, shopWebsiteEditText,
 			shopEmailEditText, shopHoursEditText, shopFBLikeEditText,
 			shopCategoryEditText, shopPhoneEditText, shopLatLngEditText;
 	private AlertDialog dialog;

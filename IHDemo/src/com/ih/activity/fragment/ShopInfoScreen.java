@@ -1,6 +1,7 @@
 package com.ih.activity.fragment;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.ih.database.DBAdapter;
 import com.ih.demo.R;
 import com.ih.model.Shop;
 
@@ -50,14 +52,21 @@ public class ShopInfoScreen extends SherlockFragment {
 	}
 
 	private void initializeHandler() {
-		// TODO Auto-generated method stub
 
 	}
 
 	private void initializeScreen() {
-
-		((ImageView) getActivity().findViewById(R.id.shopDetailImageView))
-				.setImageResource(shop.getShopRes());
+		DBAdapter dbAdapter=new DBAdapter(getActivity());
+		dbAdapter.open();
+		shop=dbAdapter.getShop();
+		if (shop == null)
+			return;
+		if (shop.getShopImageUrl() != null)
+			((ImageView) getActivity().findViewById(R.id.shopDetailImageView))
+					.setImageURI(Uri.parse(shop.getShopImageUrl()));
+		else
+			((ImageView) getActivity().findViewById(R.id.shopDetailImageView))
+					.setImageResource(R.drawable.ic_launcher);
 		((TextView) getActivity().findViewById(R.id.shopNameTextView))
 				.setText(shop.getShopName());
 		((TextView) getActivity().findViewById(R.id.shopAddessValueTextView))

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,17 +20,19 @@ import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.ih.customwidgets.CustomTextView;
+import com.ih.database.DBAdapter;
 import com.ih.demo.R;
 import com.ih.model.Product;
 import com.ih.model.Shop;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ShopProductsScreen extends SherlockFragment {
 
 	private String mContent;
 	private View root;
 	private Context context;
-	ListView listView;
-	Shop shop;
+	private ListView listView;
+	private DBAdapter dbAdapter;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -37,7 +40,7 @@ public class ShopProductsScreen extends SherlockFragment {
 		root = (ViewGroup) inflater
 				.inflate(R.layout.shop_products_screen, null);
 		context = this.getActivity();
-
+		dbAdapter = new DBAdapter(getActivity());
 		return root;
 	}
 
@@ -49,7 +52,6 @@ public class ShopProductsScreen extends SherlockFragment {
 		}
 		builder.deleteCharAt(builder.length() - 1);
 		fragment.mContent = builder.toString();
-		fragment.shop = shop;
 		return fragment;
 	}
 
@@ -92,9 +94,7 @@ public class ShopProductsScreen extends SherlockFragment {
 		FragmentManager fragmentManager = getActivity()
 				.getSupportFragmentManager();
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
-		Fragment collectionFragment = CollectionScreen.newInstance(products
-				.get(position).getProductName(), products.get(position)
-				.getCollections());
+		Fragment collectionFragment = CollectionScreen.newInstance(products.get(position).getProductId(),products.get(position).getProductName());
 		transaction.add(R.id.fragment_container, collectionFragment,
 				getString(R.string.shop_detail_tag));
 		transaction.addToBackStack(getString(R.string.shop_detail_tag));
@@ -110,22 +110,31 @@ public class ShopProductsScreen extends SherlockFragment {
 	 */
 	private void downloadData() {
 
-		products = Product.getproducts();
+		// products = Product.getproducts();
+		try {
+			dbAdapter.open();
+			products = dbAdapter.getProducts();
+			dbAdapter.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public class ShopProductAdapter extends BaseAdapter {
 
-		Context context;
+		private Context context;
 
-		ArrayList<Product> products;
-		ViewHolder viewHolder;
-		LayoutInflater layoutInflater;
+		private ArrayList<Product> products;
+		private ViewHolder viewHolder;
+		private LayoutInflater layoutInflater;
+		private ImageLoader imageLoader;
 
 		public ShopProductAdapter(Context context, ArrayList<Product> products) {
 
 			this.context = context;
 			this.products = products;
 			layoutInflater = ((Activity) context).getLayoutInflater();
+			imageLoader=ImageLoader.getInstance();
 		}
 
 		@Override
@@ -163,8 +172,14 @@ public class ShopProductsScreen extends SherlockFragment {
 				viewHolder.resetView();
 			}
 
-			viewHolder.productImage.setImageResource(products.get(position)
-					.getProductRes());
+			if(TextUtils.isEmpty(products.get(position).getProductImageUrl()))
+				imageLoader.displayImage("drawable://"+context.getResources().getIdentifier(products.get(position).getProductRes(), "drawable", context.getPackageName()),viewHolder.productImage);
+				//viewHolder.productImage.setImageResource(context.getResources().getIdentifier(products.get(position).getProductRes(), "drawable", context.getPackageName()));
+			else
+			{
+					imageLoader.displayImage((products.get(position).getProductImageUrl().startsWith("http") || products.get(position).getProductImageUrl().startsWith("https"))?products.get(position).getProductImageUrl():"file:///"+products.get(position).getProductImageUrl(), viewHolder.productImage);
+					
+			}
 			viewHolder.collectionNameText.setText(products.get(position)
 					.getProductName());
 			viewHolder.collectionCountText.setText(""

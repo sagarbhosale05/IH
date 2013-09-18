@@ -1,5 +1,6 @@
 package com.ih.activity.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings.Secure;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.widget.Button;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.ih.BaseActivity;
+import com.ih.activity.fragmentactivity.ShopDetailFragmentActivity;
 import com.ih.demo.R;
 import com.ih.utility.Utility;
 
@@ -44,7 +46,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
 
 		if (Utility.isUserAlreadySignedUp(getActivity()) != 0) {
 
-			addDasBoardFragment();
+			addShopDashBoardFragment();
 		}
 		super.onResume();
 
@@ -116,8 +118,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
 		transaction.commit();
 	}
 
-
-	private void addDasBoardFragment() {
+	private void addDashBoardFragment() {
 		FragmentManager fragmentManager = getActivity()
 				.getSupportFragmentManager();
 		FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -126,6 +127,12 @@ public class HomeFragment extends SherlockFragment implements OnClickListener {
 				getString(R.string.home_tag));
 		transaction.setBreadCrumbTitle(getString(R.string.home_screentitle));
 		transaction.commit();
+	}
+
+	private void addShopDashBoardFragment() {
+		Intent shopDetails = new Intent(getActivity(),
+				ShopDetailFragmentActivity.class);
+		startActivity(shopDetails);
 	}
 
 }

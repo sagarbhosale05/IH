@@ -18,9 +18,19 @@ import android.os.Build;
 import android.util.Base64;
 import android.util.Log;
 
+import com.ih.demo.R;
 import com.ih.imagecache.Cache;
 import com.ih.imagecache.ImageCache;
 import com.ih.imagecache.ImageCache.ImageCacheParams;
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.cache.memory.MemoryCacheAware;
+import com.nostra13.universalimageloader.cache.memory.impl.LRULimitedMemoryCache;
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
 /**
  * @author abhijeet.bhosale
@@ -56,7 +66,10 @@ public class IHApp extends Application {
 	public void onCreate() {
 		super.onCreate();
 		context = getApplicationContext();
+		// AppURL.setToProd();
+		// AppURL.setToDev();
 		setUpCache();
+		initImageLoader();
 		setDeviceVersion();
 		generateKeyHash();
 	}
@@ -149,6 +162,44 @@ public class IHApp extends Application {
 		Log.d("Cleanup", "Clear cache on Low Memory");
 		if (imageCache != null)
 			imageCache.clearCaches();
+	}
+
+	/**
+	 * Initialize the Image Loader
+	 * 
+	 */
+	public void initImageLoader() {
+		int memoryCacheSize = (int) (Runtime.getRuntime().maxMemory() / 8);
+
+		MemoryCacheAware<String, Bitmap> memoryCache;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD) {
+			memoryCache = new LruMemoryCache(memoryCacheSize);
+		} else {
+			memoryCache = new LRULimitedMemoryCache(memoryCacheSize);
+		}
+
+		// This configuration tuning is custom. You can tune every option, you
+		// may tune some of them,
+		// or you can create default configuration by
+		// ImageLoaderConfiguration.createDefault(this);
+		// method.
+
+		DisplayImageOptions defaultImageoptions = new DisplayImageOptions.Builder()
+				.showImageForEmptyUri(R.drawable.ic_launcher)
+				.cacheInMemory(true)
+				.showImageOnFail(R.drawable.ic_launcher)
+				.cacheOnDisc(true).imageScaleType(ImageScaleType.IN_SAMPLE_INT)
+				.bitmapConfig(Bitmap.Config.RGB_565).build();
+
+		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+				this).threadPriority(Thread.NORM_PRIORITY - 1)
+				.memoryCache(memoryCache).denyCacheImageMultipleSizesInMemory()
+				.discCacheFileNameGenerator(new Md5FileNameGenerator())
+				.tasksProcessingOrder(QueueProcessingType.FIFO)
+				.defaultDisplayImageOptions(defaultImageoptions)
+				.build();
+		// Initialize ImageLoader with configuration.
+		ImageLoader.getInstance().init(config);
 	}
 
 }

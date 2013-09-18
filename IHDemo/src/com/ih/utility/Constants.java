@@ -85,6 +85,10 @@ public class Constants {
 	public static final int AD_RECEIVED = 1;
 
 	public static final String CACHE_MAKE_LIST_KEY = "MakeList";
+	/** Production server host url */
+	public static final String PRO_IH_HOST = "";
+	/** Development server host url */
+	public static final String DEV_IH_HOST = "";
 	
 	
 	

@@ -138,7 +138,7 @@ public class SignUpFragment extends SherlockFragment implements
 			((BaseActivity) getActivity()).setActionBarHomeAsUpEnabled(true);
 
 		((BaseActivity) getActivity())
-				.setBackgroundResource(R.drawable.textured_bgrd);
+				.setBackgroundResource(R.drawable.activity_bg);
 		super.onResume();
 	}
 

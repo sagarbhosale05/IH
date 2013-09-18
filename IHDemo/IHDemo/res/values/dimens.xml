@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <dimen name="actionbar_title_width">125dp</dimen>
-    <dimen name="adview_height">50dip</dimen>
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-
-</resources>

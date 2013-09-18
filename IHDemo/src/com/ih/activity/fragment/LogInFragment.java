@@ -44,7 +44,10 @@ import com.ih.customwidgets.CustomButton;
 import com.ih.customwidgets.CustomEditText;
 import com.ih.database.DBAdapter;
 import com.ih.demo.R;
+import com.ih.model.Login;
 import com.ih.model.User;
+import com.ih.request.IHRequest.IHRequestListener;
+import com.ih.service.ServiceHelper;
 import com.ih.utility.Constants;
 import com.ih.utility.Globals;
 import com.ih.utility.Utility;
@@ -75,6 +78,7 @@ public class LogInFragment extends SherlockFragment implements OnClickListener,
 
 	private GraphUser user = null;
 	private SessionTracker sessionTracker;
+	ServiceHelper serviceHelper;
 
 	@Override
 	public View onCreateView(LayoutInflater arg0, ViewGroup arg1, Bundle arg2) {
@@ -128,12 +132,12 @@ public class LogInFragment extends SherlockFragment implements OnClickListener,
 			((BaseActivity) getActivity()).setActionBarHomeAsUpEnabled(true);
 
 		((BaseActivity) getActivity())
-				.setBackgroundResource(R.drawable.textured_bgrd);
+				.setBackgroundResource(R.drawable.activity_bg);
 		super.onResume();
 	}
 
 	private void initializeScreen() {
-
+		serviceHelper=ServiceHelper.getInstance(getActivity());
 		((BaseActivity) getActivity())
 				.setScreenTitle(getString(R.string.sign_in_screentitle));
 		btnLoginWithFb = (CustomButton) parentView
@@ -197,8 +201,8 @@ public class LogInFragment extends SherlockFragment implements OnClickListener,
 		case R.id.btnSignInNative:
 			if (checkValidations()) {
 				registrationHappeningThrough = Constants.UNIQUE_APP_ID;
-				validateWithServerAndLogin();
-				
+				//validateWithServerAndLogin();
+				validateWithLocalDBLogin();
 			}
 			break;
 		case R.id.btnLoginWithTw:
@@ -294,6 +298,37 @@ public class LogInFragment extends SherlockFragment implements OnClickListener,
 	}
 
 	private void validateWithServerAndLogin() {
+
+		emailId = edtTxtEmailId.getText().toString();
+		password = edtTxtPassword.getText().toString();
+		Login login=new Login();
+		login.setPassword(password);
+		login.setUsername(emailId);
+		
+		try {
+			serviceHelper.login(login, new IHRequestListener() {
+				
+				@Override
+				public void onRequestComplete(Object obj) {
+
+					saveUserDetails();
+				}
+				
+				@Override
+				public void onError(int errorCode, String errorMessage) {
+					Toast.makeText(getActivity(), errorMessage,
+							Toast.LENGTH_SHORT).show();					
+				}
+			});
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		} finally {
+		}
+	}
+
+	private void validateWithLocalDBLogin() {
 		DBAdapter dbAdapter = new DBAdapter(getActivity());
 
 		emailId = edtTxtEmailId.getText().toString();
@@ -318,7 +353,8 @@ public class LogInFragment extends SherlockFragment implements OnClickListener,
 				dbAdapter.close();
 		}
 	}
-
+	
+	
 	private class TwitterIdTask extends AsyncTask<Void, Void, Void> {
 		private ProgressDialog progressDialog;
 

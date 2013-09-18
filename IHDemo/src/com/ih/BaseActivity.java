@@ -32,6 +32,7 @@ import com.actionbarsherlock.view.MenuItem;
 import com.facebook.Session;
 import com.ih.activity.fragmentactivity.AboutScreenFragmentActivity;
 import com.ih.activity.fragmentactivity.AccountDetailFragmentActivity;
+import com.ih.activity.fragmentactivity.AddCollectionFragmentActivity;
 import com.ih.activity.fragmentactivity.AddProductFragmentActivity;
 import com.ih.activity.fragmentactivity.EditProfileFragmentActivity;
 import com.ih.activity.fragmentactivity.HomeFragmentActivity;
@@ -117,7 +118,7 @@ public class BaseActivity extends SherlockFragmentActivity implements
 		ab.setCustomView(customView);
 		setActionBarForMainActivity();
 		ab.setBackgroundDrawable(getResources().getDrawable(
-				R.drawable.header_bg_1px));
+				R.drawable.header_background_1px));
 
 	}
 
@@ -295,7 +296,7 @@ public class BaseActivity extends SherlockFragmentActivity implements
 			startActivity(intent);
 			return true;
 		case R.id.addProduct:
-			intent = new Intent(this, AddProductFragmentActivity.class);
+			intent = new Intent(this, AddCollectionFragmentActivity.class);
 			intent.putExtra(screenTitleKey, item.getTitle());
 			startActivity(intent);
 			return true;

@@ -2,12 +2,13 @@ package com.ih.model;
 
 import java.util.ArrayList;
 
-import com.ih.demo.R;
+import android.content.ContentValues;
+import android.database.Cursor;
 
 public class Product {
 
 	private int productId;
-	private int productRes;
+	private String productRes;
 
 	private String productName;
 	private int productCoollectionCount;
@@ -61,229 +62,229 @@ public class Product {
 		Collection collection = new Collection();
 
 		collection.setCollectionId(1);
-		collection.setCollectionRes(R.drawable.a);
+		collection.setCollectionRes("a");
 		collection.setCollectionName("Levi Jeans");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1410);
+		collection.setCollectionPrice("1410");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(0);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.b);
+		collection.setCollectionRes("b");
 		collection.setCollectionId(2);
 		collection.setCollectionName("Muffler");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1420);
+		collection.setCollectionPrice("1410");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(0);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.c);
+		collection.setCollectionRes("c");
 		collection.setCollectionId(3);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1520);
+		collection.setCollectionPrice("1520");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(1);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.d);
+		collection.setCollectionRes("d");
 		collection.setCollectionId(4);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1480);
+		collection.setCollectionPrice("1480");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(0);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.e);
+		collection.setCollectionRes("e");
 		collection.setCollectionId(5);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1400);
+		collection.setCollectionPrice("1400");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(0);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.f);
+		collection.setCollectionRes("f");
 		collection.setCollectionId(6);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1500);
+		collection.setCollectionPrice("1500");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(1);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.g);
+		collection.setCollectionRes("g");
 		collection.setCollectionId(7);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1420);
+		collection.setCollectionPrice("1420");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(0);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.h);
+		collection.setCollectionRes("h");
 		collection.setCollectionId(8);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1600);
+		collection.setCollectionPrice("1600");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(0);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.i);
+		collection.setCollectionRes("i");
 		collection.setCollectionId(9);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1220);
+		collection.setCollectionPrice("1220");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(1);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.j);
+		collection.setCollectionRes("j");
 		collection.setCollectionId(10);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1420);
+		collection.setCollectionPrice("1420");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(1);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.k);
+		collection.setCollectionRes("k");
 		collection.setCollectionId(11);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1520);
+		collection.setCollectionPrice("1520");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(1);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.l);
+		collection.setCollectionRes("l");
 		collection.setCollectionId(12);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1420);
+		collection.setCollectionPrice("1420");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(0);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.m);
+		collection.setCollectionRes("m");
 		collection.setCollectionId(13);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1640);
+		collection.setCollectionPrice("1640");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(1);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.n);
+		collection.setCollectionRes("n");
 		collection.setCollectionId(14);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1420);
+		collection.setCollectionPrice("1420");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(0);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.o);
+		collection.setCollectionRes("o");
 		collection.setCollectionId(15);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1420);
+		collection.setCollectionPrice("1420");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(0);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.p);
+		collection.setCollectionRes("p");
 		collection.setCollectionId(16);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1420);
+		collection.setCollectionPrice("1420");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(0);
 		collections.add(collection);
 
 		collection = new Collection();
-		collection.setCollectionRes(R.drawable.u);
+		collection.setCollectionRes("u");
 		collection.setCollectionId(17);
 		collection.setCollectionName("ABC");
 		collection.setCollectionDescription("Dummy Description");
 		collection.setCollectionMaterial("Dummy Material");
-		collection.setCollectionPrice(1420);
+		collection.setCollectionPrice("1420");
 		collection.setCollectionSizeDimensions("Dummy Size/Dimension");
 		collection.setCollectiontFollowed(false);
 		collection.setCollectiontImageUrl("");
-		collection.setCollectiontInStock(true);
+		collection.setCollectiontInStock(0);
 		collections.add(collection);
 
 		Product product = new Product();
 
 		product.setProductId(1);
-		product.setProductRes(R.drawable.g);
+		product.setProductRes("g");
 		product.setProductName("Mens Winter Collection");
 		product.setProductCoollectionCount(34);
 		product.setProductImageUrl("");
@@ -291,7 +292,7 @@ public class Product {
 		products.add(product);
 
 		product = new Product();
-		product.setProductRes(R.drawable.f);
+		product.setProductRes("f");
 		product.setProductId(2);
 		product.setProductName("Kids Winter Collection");
 		product.setProductCoollectionCount(64);
@@ -300,7 +301,7 @@ public class Product {
 		products.add(product);
 
 		product = new Product();
-		product.setProductRes(R.drawable.k);
+		product.setProductRes("k");
 		product.setProductId(3);
 		product.setProductName("Pullovers");
 		product.setProductCoollectionCount(20);
@@ -309,7 +310,7 @@ public class Product {
 		products.add(product);
 
 		product = new Product();
-		product.setProductRes(R.drawable.b);
+		product.setProductRes("b");
 		product.setProductId(4);
 		product.setProductName("Levi Strauss Jeans");
 		product.setProductCoollectionCount(24);
@@ -318,7 +319,7 @@ public class Product {
 		products.add(product);
 
 		product = new Product();
-		product.setProductRes(R.drawable.r);
+		product.setProductRes("r");
 		product.setProductId(5);
 		product.setProductName("Women Winter Collection");
 		product.setProductCoollectionCount(34);
@@ -327,7 +328,7 @@ public class Product {
 		products.add(product);
 
 		product = new Product();
-		product.setProductRes(R.drawable.q);
+		product.setProductRes("q");
 		product.setProductId(6);
 		product.setProductName("Mens Summer Collection");
 		product.setProductCoollectionCount(34);
@@ -336,7 +337,7 @@ public class Product {
 		products.add(product);
 
 		product = new Product();
-		product.setProductRes(R.drawable.e);
+		product.setProductRes("e");
 		product.setProductId(7);
 		product.setProductName("Women Summer Collection");
 		product.setProductCoollectionCount(34);
@@ -345,7 +346,7 @@ public class Product {
 		products.add(product);
 
 		product = new Product();
-		product.setProductRes(R.drawable.a);
+		product.setProductRes("a");
 		product.setProductId(8);
 		product.setProductName("Mens Jeans");
 		product.setProductCoollectionCount(15);
@@ -360,7 +361,7 @@ public class Product {
 	/**
 	 * @return the productRes
 	 */
-	public int getProductRes() {
+	public String getProductRes() {
 		return productRes;
 	}
 
@@ -368,8 +369,42 @@ public class Product {
 	 * @param productRes
 	 *            the productRes to set
 	 */
-	public void setProductRes(int productRes) {
+	public void setProductRes(String productRes) {
 		this.productRes = productRes;
+	}
+
+	public static ArrayList<Product> getProducts(Cursor cursor) {
+		ArrayList<Product> products = new ArrayList<Product>();
+
+		do {
+			Product product = new Product();
+			product.setProductId(cursor.getInt(cursor
+					.getColumnIndex("productId")));
+			product.setProductImageUrl(cursor.getString(cursor
+					.getColumnIndex("productImageUrl")));
+			product.setProductName(cursor.getString(cursor
+					.getColumnIndex("productName")));
+			product.setProductRes(cursor.getString(cursor
+					.getColumnIndex("productLocalImageResName")));
+			product.setProductCoollectionCount(cursor.getInt(cursor
+					.getColumnIndex("productCollectionsCount")));
+			
+			
+			products.add(product);
+
+		} while (cursor.moveToNext());
+
+		return products;
+	}
+
+	public static ContentValues getContentValues(Product product) {
+		ContentValues contentValues = new ContentValues();
+		contentValues.put("productName", product.getProductName());
+		contentValues.put("productImageUrl", product.getProductImageUrl());
+		contentValues.put("productLocalImageResName", product.getProductRes());
+		contentValues.put("productCollectionsCount", product.getProductCoollectionCount());
+		return contentValues;
+	
 	}
 
 }

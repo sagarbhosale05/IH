@@ -11,7 +11,7 @@
 
     <com.ih.customwidgets.CustomButton
         android:id="@+id/btnHomeSignIn"
-        style="@style/TextAppearance_orange_26_regular"
+        style="@style/TextAppearance_blueshade3_26_regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dip"
@@ -22,7 +22,7 @@
 
     <com.ih.customwidgets.CustomButton
         android:id="@+id/btnSignUp"
-        style="@style/TextAppearance_orange_26_regular"
+        style="@style/TextAppearance_blueshade3_26_regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnHomeSignIn"
