@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.ih.BaseActivity;
 import com.ih.customwidgets.CustomTextView;
 import com.ih.database.DBAdapter;
 import com.ih.demo.R;
@@ -59,8 +60,8 @@ public class ShopProductsScreen extends SherlockFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		listView = (ListView) root.findViewById(R.id.listview);
+		((BaseActivity) getActivity()).setActionBarHomeAsUpEnabled(false);
 		downloadData();
-
 		initializeScreen();
 		initializeHandler();
 	}
@@ -70,7 +71,7 @@ public class ShopProductsScreen extends SherlockFragment {
 
 	}
 
-	ShopProductAdapter shopProductAdapter;
+	private ShopProductAdapter shopProductAdapter;
 
 	private void initializeScreen() {
 		shopProductAdapter = new ShopProductAdapter(getActivity(), products);
@@ -103,7 +104,7 @@ public class ShopProductsScreen extends SherlockFragment {
 
 	}
 
-	ArrayList<Product> products;
+	private ArrayList<Product> products;
 
 	/**
 	 * 
@@ -187,6 +188,12 @@ public class ShopProductsScreen extends SherlockFragment {
 
 			return convertView;
 		}
+		/**
+		 * @param products the products to set
+		 */
+		public void setProducts(ArrayList<Product> products) {
+			this.products = products;
+		}
 
 		public class ViewHolder {
 
@@ -200,6 +207,24 @@ public class ShopProductsScreen extends SherlockFragment {
 
 		}
 
+	}
+
+	/**
+	 * 
+	 */
+	public void update() {
+
+		downloadData();
+		if(shopProductAdapter!=null)
+		{
+			shopProductAdapter.setProducts(products);
+			shopProductAdapter.notifyDataSetChanged();
+			
+		}
+		else
+		{
+			initializeScreen();
+		}
 	}
 
 }

@@ -6,6 +6,10 @@ package com.ih;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import org.acra.ACRA;
+import org.acra.ReportingInteractionMode;
+import org.acra.annotation.ReportsCrashes;
+
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -18,6 +22,7 @@ import android.os.Build;
 import android.util.Base64;
 import android.util.Log;
 
+import com.ih.acra.CrashSender;
 import com.ih.demo.R;
 import com.ih.imagecache.Cache;
 import com.ih.imagecache.ImageCache;
@@ -36,6 +41,8 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
  * @author abhijeet.bhosale
  * 
  */
+
+@ReportsCrashes(formKey = "")
 public class IHApp extends Application {
 	private static Context context;
 	private static final String IMAGE_CACHE_DIR = "thumbs";
@@ -65,6 +72,10 @@ public class IHApp extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		
+		ACRA.init(this);
+		CrashSender crashSender=new CrashSender(this);
+		ACRA.getErrorReporter().setReportSender(crashSender);
 		context = getApplicationContext();
 		// AppURL.setToProd();
 		// AppURL.setToDev();
@@ -186,8 +197,7 @@ public class IHApp extends Application {
 
 		DisplayImageOptions defaultImageoptions = new DisplayImageOptions.Builder()
 				.showImageForEmptyUri(R.drawable.ic_launcher)
-				.cacheInMemory(true)
-				.showImageOnFail(R.drawable.ic_launcher)
+				.cacheInMemory(true).showImageOnFail(R.drawable.ic_launcher)
 				.cacheOnDisc(true).imageScaleType(ImageScaleType.IN_SAMPLE_INT)
 				.bitmapConfig(Bitmap.Config.RGB_565).build();
 
@@ -196,8 +206,7 @@ public class IHApp extends Application {
 				.memoryCache(memoryCache).denyCacheImageMultipleSizesInMemory()
 				.discCacheFileNameGenerator(new Md5FileNameGenerator())
 				.tasksProcessingOrder(QueueProcessingType.FIFO)
-				.defaultDisplayImageOptions(defaultImageoptions)
-				.build();
+				.defaultDisplayImageOptions(defaultImageoptions).build();
 		// Initialize ImageLoader with configuration.
 		ImageLoader.getInstance().init(config);
 	}

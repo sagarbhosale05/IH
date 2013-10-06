@@ -7,6 +7,7 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -43,6 +44,7 @@ import com.facebook.widget.LoginButton.OnErrorListener;
 import com.facebook.widget.LoginButton.UserInfoChangedCallback;
 import com.ih.BaseActivity;
 import com.ih.PreferencesManager;
+import com.ih.activity.fragmentactivity.ShopDetailFragmentActivity;
 import com.ih.customwidgets.CustomButton;
 import com.ih.customwidgets.CustomEditText;
 import com.ih.database.DBAdapter;
@@ -486,7 +488,11 @@ public class SignUpFragment extends SherlockFragment implements
 	}
 
 	private void startApplication() {
-		getFragmentManager().popBackStackImmediate();
+		BaseActivity.isLogoutProcessing=false;
+		Intent intent = new Intent(	getActivity(), ShopDetailFragmentActivity.class);
+		getActivity().startActivity(intent);
+		getActivity().finish();
+	
 	}
 
 	@Override

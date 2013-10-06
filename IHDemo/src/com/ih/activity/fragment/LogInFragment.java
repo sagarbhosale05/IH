@@ -7,6 +7,7 @@ import java.util.List;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,6 +41,7 @@ import com.facebook.widget.LoginButton.OnErrorListener;
 import com.facebook.widget.LoginButton.UserInfoChangedCallback;
 import com.ih.BaseActivity;
 import com.ih.PreferencesManager;
+import com.ih.activity.fragmentactivity.ShopDetailFragmentActivity;
 import com.ih.customwidgets.CustomButton;
 import com.ih.customwidgets.CustomEditText;
 import com.ih.database.DBAdapter;
@@ -436,22 +438,16 @@ public class LogInFragment extends SherlockFragment implements OnClickListener,
 					registrationHappeningThrough);
 		}
 
-		// if the response is successful and if the sign in screen
-		// is reached from bicycle details screen then the user
-		// is trying to favorite the bicycle so close the current
-		// screen and refresh previous and favorites screen by
-		// setting variables.
-		if (navigatingFromModelDetails) {
-			Globals.isFavoritesModified = true;
-			Globals.isSignedInFromBicycleDetails = true;
-			LogInFragment.this.getFragmentManager().popBackStackImmediate();
-		} else
-			startApplication();
+		startApplication();
 		//LogInFragment.this.getFragmentManager().popBackStackImmediate();
 	}
 
 	private void startApplication() {
-		LogInFragment.this.getFragmentManager().popBackStackImmediate();
+	//	LogInFragment.this.getFragmentManager().popBackStackImmediate();
+		BaseActivity.isLogoutProcessing=false;
+		Intent intent = new Intent(	getActivity(), ShopDetailFragmentActivity.class);
+		getActivity().startActivity(intent);
+		getActivity().finish();
 	}
 
 	@Override

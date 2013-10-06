@@ -216,11 +216,11 @@ public class DBAdapter {
 
 	}
 
-	public long insertShop(Shop shop) {
+	public long updateShop(Shop shop) {
 		ContentValues cv = Shop.getContentValues(shop);
-		return db.insertWithOnConflict(TABLE_NAME_SHOP, null, cv,
+		return db.updateWithOnConflict(TABLE_NAME_SHOP, cv, "ID=?",
+				new String[] { "" + shop.getShopId() },
 				SQLiteDatabase.CONFLICT_REPLACE);
-
 	}
 
 	public long insertProduct(Product product) {

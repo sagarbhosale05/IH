@@ -11,25 +11,23 @@ import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v4.app.FragmentTransaction;
 
 import com.ih.BaseActivity;
-import com.ih.IHApp;
-import com.ih.activity.fragment.DashBoardFragment;
 import com.ih.activity.fragment.HomeFragment;
 import com.ih.activity.fragment.LogInFragment;
 import com.ih.activity.fragment.SignUpFragment;
 import com.ih.demo.R;
 import com.ih.utility.Utility;
-import com.ih.utility.navigationdrawer.DrawerBaseActivity;
 
 /**
  * @author abhijeet.bhosale
  * 
  */
-public class HomeFragmentActivity extends DrawerBaseActivity implements
+public class HomeFragmentActivity extends BaseActivity implements
 		OnBackStackChangedListener {
 	@Override
 	public void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
-		initializeDrawer();
+		setContentView(R.layout.fragment_container);
+		// initializeDrawer();
 		addHomeFragment();
 		getSupportFragmentManager().addOnBackStackChangedListener(this);
 
@@ -38,20 +36,16 @@ public class HomeFragmentActivity extends DrawerBaseActivity implements
 	/**
 	 * Initialize drawer.
 	 */
-	private void initializeDrawer() {
-		mMenuDrawer.setContentView(R.layout.fragment_container);
-		/*buttonSlideMenu = (ImageView) findViewById(R.id.button_slideMenu);
-		buttonSlideMenu.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-				mMenuDrawer.toggleMenu();
-			}
-		});*/
-		loadDrawerData();
-	}
-	
+	/*
+	 * private void initializeDrawer() {
+	 * mMenuDrawer.setContentView(R.layout.fragment_container); buttonSlideMenu
+	 * = (ImageView) findViewById(R.id.button_slideMenu);
+	 * buttonSlideMenu.setOnClickListener(new OnClickListener() {
+	 * 
+	 * @Override public void onClick(View v) {
+	 * 
+	 * mMenuDrawer.toggleMenu(); } }); loadDrawerData(); }
+	 */
 	private void addHomeFragment() {
 
 		if (Utility.isUserAlreadySignedUp(this) != 0) {
@@ -72,43 +66,24 @@ public class HomeFragmentActivity extends DrawerBaseActivity implements
 	}
 
 	private void addDasBoardFragment() {
-		/*FragmentManager fragmentManager = getSupportFragmentManager();
-		FragmentTransaction transaction = fragmentManager.beginTransaction();
-		Fragment dashBoardFragment = new DashBoardFragment();
-		transaction.add(R.id.fragment_container, dashBoardFragment,
-				getString(R.string.home_tag));
-		transaction.setBreadCrumbTitle(getString(R.string.home_screentitle));
-		transaction.commit();*/
-		Intent intent=new Intent(this, ShopDetailFragmentActivity.class);
+		/*
+		 * FragmentManager fragmentManager = getSupportFragmentManager();
+		 * FragmentTransaction transaction = fragmentManager.beginTransaction();
+		 * Fragment dashBoardFragment = new DashBoardFragment();
+		 * transaction.add(R.id.fragment_container, dashBoardFragment,
+		 * getString(R.string.home_tag));
+		 * transaction.setBreadCrumbTitle(getString(R.string.home_screentitle));
+		 * transaction.commit();
+		 */
+		Intent intent = new Intent(this, ShopDetailFragmentActivity.class);
 		startActivity(intent);
+		this.finish();
 	}
 
 	@Override
 	public void onResume() {
-		if (isLogoutProcessing) {
-			isLogoutProcessing = false;
-			super.clearBackStack();
-		} else {
-			// This is done because as we are retaining the
-			// screen state as it is, it is possible that user opens
-			// sign in / sign up screen from two
-			// flows,android.support.v4.app.FragmentManager.getBackStackEntryCount()hen
-			// we should
-			// not allow user to login multiple times.
-			// so if the user is already registered and on Home flow ,
-			// if sign in or sign up is displayed pop the fragment.
-			if (Utility.isUserAlreadySignedUp(this) != 0) {
-				if (ifDisplayingFragmentIsSignInORSignUp())
-					getSupportFragmentManager().popBackStackImmediate();
-				getSupportFragmentManager().popBackStackImmediate();
-
-				//addDasBoardFragment();
-			}
-		}
 		super.onResume();
-		// TODO:written publishInstallAsync
-		com.facebook.Settings.publishInstallAsync(this,
-				getString(R.string.app_id));
+
 	}
 
 	/**
@@ -199,15 +174,10 @@ public class HomeFragmentActivity extends DrawerBaseActivity implements
 	 */
 	@Override
 	public void onBackPressed() {
-		if (ifDisplayingFragmentIsHome()) {
-			Intent intentBroadcast = new Intent(IHApp.FINSIH_ACTION);
-			intentBroadcast.putExtra("FINISH", "ACTION.FINISH.LOGOUT");
-			sendBroadcast(intentBroadcast);
-		} else {
+		
 			// A check for sign in / sign up / model details screen is done as
 			// we are going to handle back press event on those screens.
 			handleBackPressForOtherScreens();
-		}
 		super.onBackPressed();
 	}
 

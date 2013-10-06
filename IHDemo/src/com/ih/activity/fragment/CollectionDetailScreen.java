@@ -1,6 +1,5 @@
 package com.ih.activity.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,13 +19,9 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 public class CollectionDetailScreen extends BaseActivity {
 
 	private ViewPager pager;
-	private TabPageIndicator tabHost;
 	private static String[] COLLECTION_TAB_CONTENT;
 	private boolean fromDashboardScreen;
-	private ImageView mapButton;
 
-	private String mContent;
-	private Context context;
 	private Collection collection;
 
 	@Override
@@ -55,7 +50,10 @@ public class CollectionDetailScreen extends BaseActivity {
 
 		if (TextUtils.isEmpty(collection.getCollectiontImageUrl()))
 			imageLoader.displayImage(
-					"drawable//" + collection.getCollectionRes(),
+					"drawable://"
+							+ getResources().getIdentifier(
+									collection.getCollectionRes(), "drawable",
+									getPackageName()),
 					((ImageView) findViewById(R.id.collectionImage)));
 		else {
 			imageLoader.displayImage((collection.getCollectiontImageUrl()

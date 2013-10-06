@@ -1,46 +1,41 @@
 package com.ih.activity.fragmentactivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.View;
-import android.widget.ImageView;
 
 import com.ih.BaseActivity;
+import com.ih.IHApp;
 import com.ih.activity.fragment.CollectionScreen;
 import com.ih.activity.fragment.ShopInfoScreen;
-import com.ih.activity.fragment.ShopMapScreen;
 import com.ih.activity.fragment.ShopProductsScreen;
-import com.ih.activity.fragment.ShopReviewScreen;
 import com.ih.database.DBAdapter;
 import com.ih.demo.R;
 import com.ih.model.Shop;
+import com.ih.utility.Utility;
 import com.ih.viewpagerindicator.TabPageIndicator;
 
 public class ShopDetailFragmentActivity extends BaseActivity implements
 		OnBackStackChangedListener {
 
 	private ViewPager pager;
-	TabPageIndicator tabHost;
+	private TabPageIndicator tabHost;
 	private static String[] SHOP_DETAIL_TAB_CONTENT;
-	private boolean fromDashboardScreen;
-	private ImageView mapButton;
 	private Shop shop;
-	private View parentView;
-	DBAdapter dbAdapter;
+	private DBAdapter dbAdapter;
+	private FragmentAdapter adapter;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 		setContentView(R.layout.fragments_tabs);
-
 		setScreenTitle("Saturday Shoppee");
 		initializeScreen();
-		// getSupportFragmentManager().addOnBackStackChangedListener(this);
-		this.setActionBarHomeAsUpEnabled(true);
+		getSupportFragmentManager().addOnBackStackChangedListener(this);
 	}
 
 	private void initializeScreen() {
@@ -55,24 +50,16 @@ public class ShopDetailFragmentActivity extends BaseActivity implements
 				dbAdapter.close();
 		}
 		SHOP_DETAIL_TAB_CONTENT = new String[] { "Store Info", "Products" };
-
-		if (pager != null)
-			return;
-		FragmentAdapter adapter = new FragmentAdapter(
-				getSupportFragmentManager());
+		adapter = new FragmentAdapter(getSupportFragmentManager());
 
 		pager = (ViewPager) findViewById(R.id.pager);
-		pager.setOffscreenPageLimit(2);
+		pager.setOffscreenPageLimit(1);
 
 		pager.setAdapter(adapter);
 		pager.setCurrentItem(0, false);
 
 		TabPageIndicator indicator = (TabPageIndicator) findViewById(R.id.indicator);
-		if (fromDashboardScreen) {
-			indicator.setViewPager(pager, 0);
-		} else {
-			indicator.setViewPager(pager, 0);
-		}
+		indicator.setViewPager(pager, 0);
 
 	}
 
@@ -106,18 +93,24 @@ public class ShopDetailFragmentActivity extends BaseActivity implements
 			if (fragment != null) {
 				fragment.onResume();
 				this.invalidateOptionsMenu();
+			} else {
+				this.invalidateOptionsMenu();
+				((BaseActivity) this).setActionBarHomeAsUpEnabled(false);
+				if (adapter != null)
+					adapter.notifyDataSetChanged();
 			}
 			return;
 		}
-		String str = backEntry.getName();
+		if (backEntry != null) {
+			String str = backEntry.getName();
 
-		fragment = manager.findFragmentByTag(str);
-		if (fragment != null) {
-			fragment.onResume();
-			this.invalidateOptionsMenu();
-			((BaseActivity) this).setActionBarHomeAsUpEnabled(true);
+			fragment = manager.findFragmentByTag(str);
+			if (fragment != null) {
+				fragment.onResume();
+				this.invalidateOptionsMenu();
+				((BaseActivity) this).setActionBarHomeAsUpEnabled(true);
+			}
 		}
-
 	}
 
 	class FragmentAdapter extends FragmentStatePagerAdapter {
@@ -168,13 +161,83 @@ public class ShopDetailFragmentActivity extends BaseActivity implements
 			return SHOP_DETAIL_TAB_CONTENT.length;
 		}
 
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * android.support.v4.view.PagerAdapter#getItemPosition(java.lang.Object
+		 * )
+		 */
+		@Override
+		public int getItemPosition(Object object) {
+
+			if (object instanceof ShopInfoScreen) {
+				((ShopInfoScreen) object).update();
+			}
+
+			if (object instanceof ShopProductsScreen) {
+				((ShopProductsScreen) object).update();
+			}
+			return super.getItemPosition(object);
+		}
 	}
 
 	@Override
 	public void onBackPressed() {
-		handleBackPressForOtherScreens();
 
+		if (ifDisplayingFragmentIsHome()) {
+			Intent intentBroadcast = new Intent(IHApp.FINSIH_ACTION);
+			intentBroadcast.putExtra("FINISH", "ACTION.FINISH.LOGOUT");
+			sendBroadcast(intentBroadcast);
+		} else {
+			// A check for sign in / sign up / model details screen is done as
+			// we are going to handle back press event on those screens.
+			handleBackPressForOtherScreens();
+		}
 		super.onBackPressed();
+
+	}
+
+	public boolean ifDisplayingFragmentIsHome() {
+		if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+			return true;
+		}
+		FragmentManager.BackStackEntry backEntry = getSupportFragmentManager()
+				.getBackStackEntryAt(
+						getSupportFragmentManager().getBackStackEntryCount() - 1);
+		if (backEntry == null)
+			return true;
+		String str = backEntry.getName();
+
+		Fragment fragment = getSupportFragmentManager().findFragmentByTag(str);
+		if (fragment != null
+				&& (fragment instanceof ShopProductsScreen || fragment instanceof ShopInfoScreen)) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void onResume() {
+
+		if (isLogoutProcessing) {
+			isLogoutProcessing = false;
+			finish();
+		} else {
+			// This is done because as we are retaining the
+			// screen state as it is, it is possible that user opens
+			// sign in / sign up screen from two
+			// flows,android.support.v4.app.FragmentManager.getBackStackEntryCount()hen
+			// we should
+			// not allow user to login multiple times.
+			// so if the user is already registered and on Home flow ,
+			// if sign in or sign up is displayed pop the fragment.
+			if (Utility.isUserAlreadySignedUp(this) != 0) {
+			}
+
+			onBackStackChanged();
+		}
+		super.onResume();
 	}
 
 	private boolean handleBackPressForOtherScreens() {

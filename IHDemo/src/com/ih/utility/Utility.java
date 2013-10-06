@@ -14,10 +14,13 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.StatFs;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
@@ -406,7 +409,7 @@ public class Utility {
 		}
 		return Constants.UNIQUE_APP_ID;
 	}
-	
+
 	public static void showToast(Context context, String message) {
 		showToast(context, message, Toast.LENGTH_SHORT);
 	}
@@ -415,4 +418,12 @@ public class Utility {
 		Toast.makeText(context, message, millisec).show();
 	}
 
+	public static String getPath(Activity activity,Uri uri) {
+		String[] projection = { MediaStore.Images.Media.DATA };
+		Cursor cursor = activity.managedQuery(uri, projection, null, null, null);
+		int column_index = cursor
+				.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+		cursor.moveToFirst();
+		return cursor.getString(column_index);
+	}
 }

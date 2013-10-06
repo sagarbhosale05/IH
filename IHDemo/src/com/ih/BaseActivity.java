@@ -29,20 +29,15 @@ import com.actionbarsherlock.internal.widget.IcsAdapterView.OnItemSelectedListen
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-import com.facebook.Session;
 import com.ih.activity.fragmentactivity.AboutScreenFragmentActivity;
-import com.ih.activity.fragmentactivity.AccountDetailFragmentActivity;
 import com.ih.activity.fragmentactivity.AddCollectionFragmentActivity;
-import com.ih.activity.fragmentactivity.AddProductFragmentActivity;
 import com.ih.activity.fragmentactivity.EditProfileFragmentActivity;
 import com.ih.activity.fragmentactivity.HomeFragmentActivity;
 import com.ih.activity.fragmentactivity.PrivacyPolicyFragmentActivity;
+import com.ih.activity.fragmentactivity.ShopDetailFragmentActivity;
 import com.ih.activity.fragmentactivity.TermsAndConditionsFragmentActivity;
 import com.ih.asynctasks.LogOutTask;
 import com.ih.demo.R;
-import com.ih.utility.Constants;
-import com.ih.utility.Utility;
-import com.twitter.twitterutil.TwitterUtility;
 
 /**
  * @author abhijeet.bhosale
@@ -69,7 +64,7 @@ public class BaseActivity extends SherlockFragmentActivity implements
 	 * screen we just pop the backstack. This flag will be checked in
 	 * {@link HomeFragmentActivity#onResume()}
 	 */
-	protected static boolean isLogoutProcessing = false;
+	public static boolean isLogoutProcessing = false;
 
 	/**
 	 * The method is used for displaying the menu. The method checks if the user
@@ -79,18 +74,47 @@ public class BaseActivity extends SherlockFragmentActivity implements
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getSupportMenuInflater();
 		inflater.inflate(R.menu.main_menu, menu);
-
-		if (Utility.isUserAlreadySignedUp(this) == 0) {
-			menu.findItem(R.id.signOut).setVisible(false);
-			menu.findItem(R.id.account_details).setVisible(false);
-		}
-		if(this.getClass().getSimpleName().equalsIgnoreCase(EditProfileFragmentActivity.class.getSimpleName()))
-		{
+		if (this.getClass()
+				.getSimpleName()
+				.equalsIgnoreCase(
+						EditProfileFragmentActivity.class.getSimpleName())) {
 			menu.findItem(R.id.editProfile).setVisible(false);
 		}
-		if(this.getClass().getSimpleName().equalsIgnoreCase(AddProductFragmentActivity.class.getSimpleName()))
-		{
+		else if (this.getClass()
+				.getSimpleName()
+				.equalsIgnoreCase(
+						AddCollectionFragmentActivity.class.getSimpleName())) {
 			menu.findItem(R.id.addProduct).setVisible(false);
+		}
+		
+		
+		else if (this.getClass()
+				.getSimpleName()
+				.equalsIgnoreCase(
+						TermsAndConditionsFragmentActivity.class.getSimpleName())) {
+			menu.findItem(R.id.termsAndCondition).setVisible(false);
+		}
+		
+		else if (this.getClass()
+				.getSimpleName()
+				.equalsIgnoreCase(
+						PrivacyPolicyFragmentActivity.class.getSimpleName())) {
+			menu.findItem(R.id.privacy).setVisible(false);
+		}
+		else if (this.getClass()
+				.getSimpleName()
+				.equalsIgnoreCase(
+						AboutScreenFragmentActivity.class.getSimpleName())) {
+			menu.findItem(R.id.about).setVisible(false);
+		}
+		else if (this.getClass()
+				.getSimpleName()
+				.equalsIgnoreCase(
+						HomeFragmentActivity.class.getSimpleName())) {
+			menu.findItem(R.id.signOut).setVisible(false);
+			menu.findItem(R.id.editProfile).setVisible(false);
+			menu.findItem(R.id.addProduct).setVisible(false);
+			
 		}
 		return true;
 	}
@@ -163,7 +187,7 @@ public class BaseActivity extends SherlockFragmentActivity implements
 
 			if (!BaseActivity.this.getClass()
 					.equals(HomeFragmentActivity.class))
-				registerReceiver(logoutReciver, new IntentFilter(
+			registerReceiver(logoutReciver, new IntentFilter(
 						IHApp.FINSIH_ACTION));
 
 		} catch (Exception e) {
@@ -214,43 +238,13 @@ public class BaseActivity extends SherlockFragmentActivity implements
 		Intent intent = null;
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			if (this.getClass().equals(HomeFragmentActivity.class)) {
+			if (this.getClass().equals(ShopDetailFragmentActivity.class) || this.getClass().equals(HomeFragmentActivity.class) ) {
 				clearBackStack();
-			} else {
-				intent = new Intent(this, HomeFragmentActivity.class);
-				startActivity(intent);
+				return true;
 			}
+			this.finish();
 			return true;
 
-		case R.id.account_details:
-			int loggedInWith = Utility.checkNativeLogin(this);
-			if (Utility.checkNativeLogin(this) != Constants.UNIQUE_APP_ID) {
-				dialog = new AlertDialog.Builder(this).create();
-				if (loggedInWith == Constants.UNIQUE_TWITTER_ID)
-					dialog.setMessage(getResources().getString(
-							R.string.logged_in_with_tw));
-				else if (loggedInWith == Constants.UNIQUE_FACEBOOK_ID)
-					dialog.setMessage(getResources().getString(
-							R.string.logged_in_with_fb));
-
-				dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-						getString(R.string.ok_btn_text),
-						new DialogInterface.OnClickListener() {
-
-							@Override
-							public void onClick(DialogInterface dialog,
-									int which) {
-								dialog.dismiss();
-							}
-						});
-				dialog.show();
-
-			} else {
-				intent = new Intent(this, AccountDetailFragmentActivity.class);
-				intent.putExtra(screenTitleKey, item.getTitle());
-				startActivity(intent);
-			}
-			return true;
 		case R.id.termsAndCondition:
 			intent = new Intent(this, TermsAndConditionsFragmentActivity.class);
 			intent.putExtra(screenTitleKey, item.getTitle());
@@ -262,6 +256,8 @@ public class BaseActivity extends SherlockFragmentActivity implements
 			startActivity(intent);
 			return true;
 		case R.id.about:
+			if (this.getClass().equals(EditProfileFragmentActivity.class))
+				return true;
 			intent = new Intent(this, AboutScreenFragmentActivity.class);
 			intent.putExtra(screenTitleKey, item.getTitle());
 			startActivity(intent);
@@ -269,7 +265,7 @@ public class BaseActivity extends SherlockFragmentActivity implements
 		case R.id.signOut:
 			dialog = new AlertDialog.Builder(this).create();
 			dialog.setMessage(getResources().getString(R.string.logout_msg));
-			dialog.setButton(AlertDialog.BUTTON1,
+			dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
 					getString(R.string.cancel_btn_text),
 					new DialogInterface.OnClickListener() {
 						@Override
@@ -277,7 +273,7 @@ public class BaseActivity extends SherlockFragmentActivity implements
 							dialog.dismiss();
 						}
 					});
-			dialog.setButton(AlertDialog.BUTTON2,
+			dialog.setButton(AlertDialog.BUTTON_POSITIVE,
 					getString(R.string.Settings_SignOut),
 					new DialogInterface.OnClickListener() {
 						@Override
@@ -291,11 +287,15 @@ public class BaseActivity extends SherlockFragmentActivity implements
 			return true;
 
 		case R.id.editProfile:
+			if (this.getClass().equals(EditProfileFragmentActivity.class))
+				return true;
 			intent = new Intent(this, EditProfileFragmentActivity.class);
 			intent.putExtra(screenTitleKey, item.getTitle());
 			startActivity(intent);
 			return true;
 		case R.id.addProduct:
+			if (this.getClass().equals(AddCollectionFragmentActivity.class))
+				return true;
 			intent = new Intent(this, AddCollectionFragmentActivity.class);
 			intent.putExtra(screenTitleKey, item.getTitle());
 			startActivity(intent);
@@ -311,10 +311,10 @@ public class BaseActivity extends SherlockFragmentActivity implements
 	 */
 	public void signOutUser() {
 
-		if (Session.getActiveSession() != null) {
+		/*if (Session.getActiveSession() != null) {
 			Session.getActiveSession().closeAndClearTokenInformation();
 			Session.setActiveSession(null);
-		}
+		}*/
 		Context context = this;
 
 		SharedPreferences preferences = context.getSharedPreferences(
@@ -323,11 +323,11 @@ public class BaseActivity extends SherlockFragmentActivity implements
 		Editor credentialsEditor = preferences.edit();
 		credentialsEditor.clear().commit();
 
-		try {
+	/*	try {
 			new TwitterUtility(context).clearCredentials();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	public void broadcastLogoutAction() {
@@ -339,9 +339,7 @@ public class BaseActivity extends SherlockFragmentActivity implements
 		// whenever any activity other than home receives a broadcast as logout
 		// then that activity finishes itself.
 		// home will not be finished as we want to navigate to home screen.
-		if (this instanceof HomeFragmentActivity) {
-			clearBackStack();
-		}
+
 		Intent intentBroadcast = new Intent(IHApp.FINSIH_ACTION);
 		intentBroadcast.putExtra("FINISH", "ACTION.FINISH.LOGOUT");
 		sendBroadcast(intentBroadcast);
@@ -410,8 +408,6 @@ public class BaseActivity extends SherlockFragmentActivity implements
 			String action_finish = arg1.getStringExtra("FINISH");
 			isLogoutProcessing = true;
 			if (action_finish.equalsIgnoreCase("ACTION.FINISH.LOGOUT")) {
-				if (!BaseActivity.this.getClass().equals(
-						HomeFragmentActivity.class))
 					BaseActivity.this.finish();
 				// this line unregister the receiver,so that i run only one time
 				// and when next time logout is clicked then again it called

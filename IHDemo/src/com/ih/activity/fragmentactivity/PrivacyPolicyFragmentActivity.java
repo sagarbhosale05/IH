@@ -29,6 +29,7 @@ public class PrivacyPolicyFragmentActivity extends BaseActivity {
 		super.onCreate(arg0);
 		screenTitle = (String) getIntent().getExtras().get(screenTitleKey);
 		setScreenTitle();
+		setActionBarHomeAsUpEnabled(true);
 	}
 
 	@Override

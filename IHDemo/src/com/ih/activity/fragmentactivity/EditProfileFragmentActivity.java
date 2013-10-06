@@ -25,14 +25,16 @@ import com.ih.database.DBAdapter;
 import com.ih.demo.R;
 import com.ih.model.Shop;
 import com.ih.utility.Utility;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class EditProfileFragmentActivity extends BaseActivity {
 
 	private DBAdapter dbAdapter;
 	private Shop shop;
-	private EditText shopNameEditText, shopAddressEditText, shopWebsiteEditText,
-			shopEmailEditText, shopHoursEditText, shopFBLikeEditText,
-			shopCategoryEditText, shopPhoneEditText, shopLatLngEditText;
+	private EditText shopNameEditText, shopAddressEditText,
+			shopWebsiteEditText, shopEmailEditText, shopHoursEditText,
+			shopFBLikeEditText, shopCategoryEditText, shopPhoneEditText,
+			shopLatLngEditText;
 	private AlertDialog dialog;
 	private String imageUrl;
 	private ImageView shopImageView;
@@ -71,9 +73,13 @@ public class EditProfileFragmentActivity extends BaseActivity {
 			shopCategoryEditText.setText("" + shop.getShopCategory());
 			shopFBLikeEditText.setText("" + shop.getShopFBLike());
 			shopHoursEditText.setText("" + shop.getShopHrs());
-			shopLatLngEditText.setText("" + shop.getShopLat() + ","	+ shop.getShopLong());
+			shopLatLngEditText.setText("" + shop.getShopLat() + ","
+					+ shop.getShopLong());
 			if (!TextUtils.isEmpty(shop.getShopImageUrl()))
-				shopImageView.setImageURI(Uri.parse(shop.getShopImageUrl()));
+				{
+				ImageLoader loader = ImageLoader.getInstance();
+				loader.displayImage("file://" + shop.getShopImageUrl(), shopImageView);
+				}
 			shopEmailEditText.setText("" + shop.getShopEmail());
 			shopPhoneEditText.setText("" + shop.getShopPhone());
 		} else
@@ -106,7 +112,7 @@ public class EditProfileFragmentActivity extends BaseActivity {
 				dialog.show();
 			}
 			break;
-			
+
 		case R.id.shop_picture:
 			openImageIntent();
 			break;
@@ -129,8 +135,8 @@ public class EditProfileFragmentActivity extends BaseActivity {
 				.split(",")[1]);
 		shop.setShopWebSite(shopWebsiteEditText.getText().toString().trim());
 		try {
-			dbAdapter.deleteShop();
-			dbAdapter.insertShop(shop);
+			// dbAdapter.deleteShop();
+			dbAdapter.updateShop(shop);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -217,16 +223,18 @@ public class EditProfileFragmentActivity extends BaseActivity {
 								.equals(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 					}
 				}
-
 				if (!isCamera) {
 					outputFileUri = data == null ? null : data.getData();
 				}
+				imageUrl = isCamera ? outputFileUri.getPath() : Utility
+						.getPath(this, outputFileUri);
+
 			}
-			imageUrl=outputFileUri.toString();
-			shopImageView.setImageURI(outputFileUri);
-		}
-		else
-			imageUrl=null;
+
+			ImageLoader loader = ImageLoader.getInstance();
+			loader.displayImage("file://" + imageUrl, shopImageView);
+		} else
+			imageUrl = null;
 	}
 
 }

@@ -10,9 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
+import com.ih.BaseActivity;
 import com.ih.database.DBAdapter;
 import com.ih.demo.R;
 import com.ih.model.Shop;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ShopInfoScreen extends SherlockFragment {
 
@@ -44,8 +46,8 @@ public class ShopInfoScreen extends SherlockFragment {
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
+		((BaseActivity) getActivity()).setActionBarHomeAsUpEnabled(false);
 		initializeScreen();
 		initializeHandler();
 
@@ -62,8 +64,11 @@ public class ShopInfoScreen extends SherlockFragment {
 		if (shop == null)
 			return;
 		if (shop.getShopImageUrl() != null)
-			((ImageView) getActivity().findViewById(R.id.shopDetailImageView))
-					.setImageURI(Uri.parse(shop.getShopImageUrl()));
+		{
+			ImageLoader loader = ImageLoader.getInstance();
+			loader.displayImage("file://" + shop.getShopImageUrl(), ((ImageView) getActivity().findViewById(R.id.shopDetailImageView)));
+		}
+			
 		else
 			((ImageView) getActivity().findViewById(R.id.shopDetailImageView))
 					.setImageResource(R.drawable.ic_launcher);
@@ -84,6 +89,15 @@ public class ShopInfoScreen extends SherlockFragment {
 		((TextView) getActivity().findViewById(R.id.shopHrsValueTextView))
 				.setText(shop.getShopHrs());
 
+	}
+
+	/**
+	 * 
+	 */
+	public void update() {
+		initializeScreen();
+		
+		
 	}
 
 }

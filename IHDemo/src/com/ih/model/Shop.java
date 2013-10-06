@@ -236,7 +236,7 @@ public class Shop implements Serializable {
 		contentValues.put("EMAIL", shop.getShopEmail());
 		contentValues.put("FBLIKE", shop.getShopFBLike());
 		contentValues.put("HOURS", shop.getShopHrs());
-		contentValues.put("SHOP_LATLONG", shop.getShopLat()+","+shop.getShopLong());
+		contentValues.put("SHOP_LATLONG", shop.getShopLat()+";"+shop.getShopLong());
 		return contentValues;
 	}
 	

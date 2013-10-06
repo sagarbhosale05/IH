@@ -9,6 +9,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -29,6 +30,7 @@ import com.ih.database.DBAdapter;
 import com.ih.demo.R;
 import com.ih.model.Collection;
 import com.ih.model.Product;
+import com.ih.utility.Utility;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class AddCollectionFragmentActivity extends BaseActivity {
@@ -80,6 +82,7 @@ public class AddCollectionFragmentActivity extends BaseActivity {
 		collectionBrandEditText = (EditText) findViewById(R.id.brand_edittext);
 		collectionPriceEditText = (EditText) findViewById(R.id.price_edittext);
 		collectionImageView = (ImageView) findViewById(R.id.collection_picture);
+		((RadioButton) findViewById(R.id.yesRb)).setChecked(true);
 		if (getIntent() != null
 				&& getIntent().getExtras() != null
 				&& getIntent().getExtras().getSerializable("collectionObj") != null) {
@@ -323,9 +326,13 @@ public class AddCollectionFragmentActivity extends BaseActivity {
 				if (!isCamera) {
 					outputFileUri = data == null ? null : data.getData();
 				}
+				imageUrl = isCamera ? outputFileUri.getPath()
+						: Utility.getPath(this,outputFileUri);
+
 			}
-			imageUrl = outputFileUri.toString();
-			collectionImageView.setImageURI(outputFileUri);
+
+			ImageLoader loader = ImageLoader.getInstance();
+			loader.displayImage("file://" + imageUrl, collectionImageView);
 		} else
 			imageUrl = null;
 	}

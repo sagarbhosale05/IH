@@ -48,6 +48,15 @@ public class CollectionScreen extends SherlockFragment {
 
 		return root;
 	}
+	
+	/* (non-Javadoc)
+	 * @see android.support.v4.app.Fragment#onResume()
+	 */
+	@Override
+	public void onResume() {
+		super.onResume();
+		initializeScreen();
+	}
 
 	public static CollectionScreen newInstance(String content,
 			ArrayList<Collection> collection) {
@@ -68,7 +77,7 @@ public class CollectionScreen extends SherlockFragment {
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		gridView = (GridView) root.findViewById(R.id.collectionGridview);
-
+		((BaseActivity) getActivity()).setActionBarHomeAsUpEnabled(true);
 		initializeScreen();
 		initializeHandler();
 	}
@@ -259,7 +268,7 @@ public class CollectionScreen extends SherlockFragment {
 								.startsWith("http") || collections
 								.get(position).getCollectiontImageUrl()
 								.startsWith("https")) ? collections.get(
-								position).getCollectiontImageUrl() : "file://"
+								position).getCollectiontImageUrl() : "file:/"
 								+ collections.get(position)
 										.getCollectiontImageUrl(),
 						viewHolder.collectionImage);
